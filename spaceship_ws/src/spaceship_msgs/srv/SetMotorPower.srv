@@ -1,0 +1,5 @@
+uint8 motor_id  # 0=ambos, 1=izquierdo (M1), 2=derecho (M2)
+uint8 power     # 0-100 (%)
+---
+bool success
+string message

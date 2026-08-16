@@ -1,0 +1,28 @@
+spaceship_controller:
+  ros__parameters:
+    # Objetivo por defecto (se sobreescribe con el target del simulador o un click)
+    target_x: 10.0
+    target_y: 8.0
+
+    # --- Ley de control vectorial PD con estimacion de viento ---
+    # a_des = kp_pos * (p_guiado - p) - kd_vel * v - viento_estimado
+    kp_pos: 0.8          # ganancia de posicion (kp)
+    kd_vel: 2.2          # ganancia de amortiguamiento de velocidad (kd,v)
+
+    # Empuje
+    max_power: 100.0       # potencia maxima de motor (%)
+    min_thrust_power: 12.0 # empuje minimo de arranque (%)
+
+    # Control de orientacion (PD de heading sobre el empuje diferencial)
+    turn_gain: 42.0        # ganancia proporcional de giro (k_giro)
+    omega_damping: 18.0    # amortiguamiento de velocidad angular (k_omega)
+    angle_tolerance: 0.18
+    hard_angle_tolerance: 0.85  # por encima: fase ORIENT (solo gira, sin empuje)
+
+    # Guiado vertical (objetivo virtual ligeramente elevado en la aproximacion)
+    vertical_guidance_offset: 1.15   # desplazamiento del objetivo de guiado (m)
+    guidance_release_distance: 4.0   # distancia de guiado maximo (m)
+
+    # Servicio de motores
+    service_period: 0.08
+    turn_sign: 1.0
